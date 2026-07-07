@@ -1,4 +1,4 @@
-import os
+import os #just imported not in use as in replit there is secrets option while in another we have to create an env file where db_name was saved and impoeted it
 from sqlalchemy import create_engine, text
 
 # Load credentials from Replit Secrets
@@ -26,5 +26,5 @@ with engine.connect() as conn:
     first_result_all = result_all[0]
     print("type(first_result_all):", type(first_result_all))
     print(result_all)
-    dict_result_all = dict(result_all[0])
+    dict_result_all = dict(result_all[0]._mapping)
     print(dict_result_all)
