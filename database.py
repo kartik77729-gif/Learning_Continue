@@ -1,8 +1,6 @@
-import os #For virtual environment imorted Operating System
-from dotenv import load_dotenv
+import os
 from sqlalchemy import create_engine, text
-load_dotenv()  # reads .env and loads values into os.environ
-# Load credentials from environment instead of hardcoding
+# Load credentials from Replit Secrets
 DB_USER = os.environ["TIDB_USER"]
 DB_PASSWORD = os.environ["TIDB_PASSWORD"]
 DB_HOST = os.environ["TIDB_HOST"]
