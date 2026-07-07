@@ -1,10 +1,15 @@
 import os
 from sqlalchemy import create_engine, text
+
 # Load credentials from Replit Secrets
+for key in ["TIDB_USER", "TIDB_PASSWORD", "TIDB_HOST", "TIDB_DB"]:
+    if not os.environ.get(key):
+        raise EnvironmentError(f"Missing secret: '{key}'. Add it in the Secrets tab (padlock icon) in Replit.")
+
 DB_USER = os.environ["TIDB_USER"]
 DB_PASSWORD = os.environ["TIDB_PASSWORD"]
 DB_HOST = os.environ["TIDB_HOST"]
-DB_NAME = os.environ.get("TIDB_DB", "tutorial")
+DB_NAME = os.environ["TIDB_DB"]
 
 engine = create_engine(
     f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
