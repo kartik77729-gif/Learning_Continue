@@ -20,11 +20,6 @@ engine = create_engine(
 
 with engine.connect() as conn:
     result = conn.execute(text("SELECT * FROM jobs"))
-    result_all = result.all()  # store once — calling .all() twice will return [] the second time
-    print("type(result):", type(result))
-    print("type(result_all):", type(result_all))
-    first_result_all = result_all[0]
-    print("type(first_result_all):", type(first_result_all))
-    print(result_all)
-    dict_result_all = dict(result_all[0]._mapping)
-    print(dict_result_all)
+    result_all = result.all()
+    jobs_as_dicts = [row._asdict() for row in result_all]
+    print(jobs_as_dicts)
